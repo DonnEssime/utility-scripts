@@ -1,11 +1,10 @@
 #!/bin/bash
-SAVEIFS=$IFS
-IFS=$(echo -en "\n\b")
 bold=$(tput bold)
 normal=$(tput sgr0)
 red=$(tput setaf 1)
 green=$(tput setaf 2)
 cwd=$(pwd)
+#simply change Desktop/Research/ to the folder that should be crawled
 for d in $(find Desktop/Research/ -name .git -type d -exec dirname {} \;) ; do
 	echo "${bold}$d${normal}"
 	cd "$d"
@@ -28,4 +27,3 @@ for d in $(find Desktop/Research/ -name .git -type d -exec dirname {} \;) ; do
 	fi
 	cd "$cwd"
 done
-IFS=$SAVEIFS
