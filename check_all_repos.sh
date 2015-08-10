@@ -1,4 +1,6 @@
 #!/bin/bash
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
 bold=$(tput bold)
 normal=$(tput sgr0)
 red=$(tput setaf 1)
@@ -27,3 +29,4 @@ for d in $(find Desktop/Research/ -name .git -type d -exec dirname {} \;) ; do
 	fi
 	cd "$cwd"
 done
+IFS=$SAVEIFS
