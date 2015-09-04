@@ -13,9 +13,9 @@ for d in $(find Desktop/Research/ -name .git -type d -exec dirname {} \;) ; do
 	git remote update &> /dev/null
 	if [ -n "$(git log HEAD..origin/master --oneline)" ];
 	then
-		echo "${red}Upstream changes!${normal}"
+		echo "${red}Unmerged upstream changes!${normal}"
 	else
-		echo "${green}No upstream changes.${normal}"
+		echo "${green}Merged all upstream changes.${normal}"
 	fi
 	if [ -n "$(git status -s)" ]; then
 		echo "${red}Uncommitted changes!${normal}"
@@ -23,9 +23,9 @@ for d in $(find Desktop/Research/ -name .git -type d -exec dirname {} \;) ; do
 		echo "${green}No uncommitted changes.${normal}"
 	fi
 	if [ -n "$(git status | grep up-to-date)" ]; then
-		echo "${green}Remote synchronized with local.${normal}"
+		echo "${green}Pushed all downstream changes.${normal}"
 	else
-		echo "${red}Remote not synchronized with local!${normal}"
+		echo "${red}Unpushed downstream changes!${normal}"
 	fi
 	cd "$cwd"
 done
