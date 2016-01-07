@@ -1,0 +1,2 @@
+#!/bin/bash
+curl -s http://login.salemthegame.com/portal/state | grep --color -A 9 Providence
