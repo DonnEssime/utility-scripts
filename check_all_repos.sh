@@ -10,8 +10,11 @@ anyunmerged=false
 anyuncommitted=false
 anyunpushed=false
 
+CodeRepos=$(find /ipi/research/sdonn/Onderzoek/Code/ -name .git -type d -exec dirname {} \;)
+PaperRepo=$(find /ipi/research/sdonn/Papers/ -name .git -type d -exec dirname {} \;)
+AllRepos=("${CodeRepos[@]}" "${PaperRepo[@]}")
 #simply change code/ to the folder that should be crawled
-for d in $(find code/ -name .git -type d -exec dirname {} \;) ; do
+for d in ${AllRepos[@]} ; do
 	echo "${bold}$d${normal}"
 	cd "$d"
 	git remote update &> /dev/null
